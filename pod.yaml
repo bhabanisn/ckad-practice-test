@@ -12,7 +12,7 @@ spec:
     name: test
     resources: {}
 
-#####
+---
 
 apiVersion: v1
 kind: Service
