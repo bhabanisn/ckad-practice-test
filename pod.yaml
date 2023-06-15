@@ -11,9 +11,7 @@ spec:
     imagePullPolicy: Always
     name: test
     resources: {}
-
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
