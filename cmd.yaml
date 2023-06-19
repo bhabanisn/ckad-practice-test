@@ -1,0 +1,1 @@
+kubectl run from-command --image tomcat
