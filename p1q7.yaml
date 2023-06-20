@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    exam: ckad
+  name: ckad-pod-q7
+  namespace: default
+spec:
+  containers:
+  - image: nginx:1.25.1-alpine3.17-slim
+    name: nginx1
