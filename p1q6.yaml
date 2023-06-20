@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    color: blue
+    exam: ckad
+  name: ckad-pod-1
+  namespace: default
+spec:
+  containers:
+  - image: nginx:alpine
+    name: nginx1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    color: green
+    exam: ckad
+  name: ckad-pod-2
+  namespace: default
+spec:
+  containers:
+  - image: nginx:1.25.1-alpine3.17-slim
+    name: nginx1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    color: blue
+    exam: ckad
+  name: ckad-pod-3
+  namespace: default
+spec:
+  containers:
+  - image: nginx:alpine-perl
+    name: nginx1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    color: red
+    exam: ckad
+  name: ckad-pod-4
+  namespace: default
+spec:
+  containers:
+  - image: nginx
+    name: nginx1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    color: blue
+    exam: ckad
+  name: ckad-pod-5
+  namespace: default
+spec:
+  containers:
+  - image: nginx
+    name: nginx1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    color: red
+    exam: ckad
+  name: ckad-pod-6
+  namespace: default
+spec:
+  containers:
+  - image: nginx
+    name: nginx1
