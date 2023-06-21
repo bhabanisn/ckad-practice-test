@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ckad-map
+  labels:
+    exam: ckad
+data:
+  database_name: "my-db"
+  database_port: "6090"
+  database_host: "my-db-host"
