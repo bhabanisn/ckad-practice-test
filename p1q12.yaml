@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: ckad-map
+  name: ckad-map-q12
   labels:
     exam: ckad
 data:
