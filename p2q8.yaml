@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pod-p2q8-nginx
+  name: pod-p2q8-nginx
+spec:
+  containers:
+  - image: nginx
+    name: pod-p2q8-nginx
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: pod-p2q8-tomcat
+  name: pod-p2q8-tomcat
+spec:
+  containers:
+  - image: tomcat
+    name: pod-p2q8-tomcat
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: default-deny-ingress-p2q8
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress

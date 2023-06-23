@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy-p2q7
+  name: deploy-p2q7
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-p2q7
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend-p2q7
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: service-p2q7
+  name: service-p2q7
+spec:
+  ports:
+  - name: my-port
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: frontend-p2q7
+  type: ClusterIP
