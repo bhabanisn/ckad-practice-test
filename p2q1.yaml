@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    exam: ckad
+  name: pod-p2q1
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - sleep 3600
+    image: busybox:alpine
+    name: busybox
+    volumeMounts:
+    - mountPath: /cache
+      name: cache-volume
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: cache-volume
+    emptyDir:
+      sizeLimit: 500Mi

@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume-p3q9
+  labels:
+    exam: ckad
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp"
+    
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pv-claim-p3q9
+  labels:
+    exam: ckad
+spec:
+  storageClassName: auto
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+      
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pv-pod-p3q9
+spec:
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pv-claim-p3q9
+  containers:
+    - name: task-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage

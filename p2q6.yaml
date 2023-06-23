@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    exam: ckad
+  name: pod-p2q6
+spec:
+  containers:
+  - image: nginx
+    name: con1
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
