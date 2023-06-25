@@ -1,63 +1,22 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: deploy-p2q10-1
-  name: deploy-p2q10-1
-spec:
-  replicas: 5
-  selector:
-    matchLabels:
-      app: deploy-p2q10
-  strategy: {}
-  template:
-    metadata:
-      labels:
-        app: deploy-p2q10
-    spec:
-      containers:
-      - image: bhabanisn/k8sd1
-        name: ngnix
-        resources: {}
-        
----
-
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: deploy-p2q10-2
-  name: deploy-p2q10-2
-spec:
-  replicas: 0
-  selector:
-    matchLabels:
-      app: deploy-p2q10
-  strategy: {}
-  template:
-    metadata:
-      labels:
-        app: deploy-p2q10
-    spec:
-      containers:
-      - image: bhabanisn/k8sd2
-        name: ngnix
-        resources: {}
-        
----
-
 apiVersion: v1
-kind: Service
+kind: Pod
 metadata:
   labels:
-    app: service-p2q10
-  name: service-p2q10
+    exam: ckad
+  name: pod-p2q11
 spec:
-  ports:
-  - name: my-port
-    port: 8080
-    protocol: TCP
-    targetPort: 8080
-  selector:
-    app: deploy-p2q10
-  type: ClusterIP
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: ckad-exam
+            operator: In
+            values:
+            - practice
+  containers:
+  - image: nginx
+    name: test
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
