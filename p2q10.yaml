@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   labels:
     exam: ckad
-  name: pod-p2q11
+  name: pod-p2q10
 spec:
   affinity:
     nodeAffinity:
