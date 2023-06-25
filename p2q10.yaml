@@ -17,6 +17,9 @@ spec:
   containers:
   - image: nginx
     name: test
-    resources: {}
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
   dnsPolicy: ClusterFirst
   restartPolicy: Always
