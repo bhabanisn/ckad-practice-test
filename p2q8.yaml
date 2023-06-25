@@ -35,7 +35,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: default-deny-ingress-p2q8
+  name: np-p2q8
 spec:
   podSelector: {}
   policyTypes:
