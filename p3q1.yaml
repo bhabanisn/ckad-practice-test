@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    exam: ckad
+  name: ckad-deploy-p3q1
+spec:
+  replicas: 0 
+  selector:
+    matchLabels:
+      app: front-end-app-p3q1
+  strategy: {}
+  template:
+    metadata:      
+      labels:
+        app: front-end-app-p3q1
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
