@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: deploy-p3q6
+  name: deploy-p3q6
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-p3q6
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: frontend-p3q6
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+        resources: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: service-p3q6
+  name: service-p3q6
+spec:
+  ports:
+  - name: my-port
+    port: 8080
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: frontnd-p3q6
+  type: ClusterIP
