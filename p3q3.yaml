@@ -13,7 +13,7 @@ spec:
   template:
     metadata:      
       labels:
-        app: front-end-app-p3q3
+        app: front-end-apps-p3q3
     spec:
       securityContext:
         capabilities:
