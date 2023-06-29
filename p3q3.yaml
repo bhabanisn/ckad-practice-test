@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   labels:
     exam: ckad
-  name: ckad-deploy-p2q2
+  name: ckad-deploy-p3q3
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: front-end-apps-p2q2
+      app: front-end-apps-p3q3
   strategy: {}
   template:
     metadata:      
       labels:
-        app: front-end-app-p2q2
+        app: front-end-app-p3q3
     spec:
       securityContext:
         capabilities:
