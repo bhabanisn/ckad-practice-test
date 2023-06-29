@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-p3q2-1
+spec: {}
+ 
+---
+ 
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ns-p3q2-2
+spec: {}
+ 
+---
+ 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    exam: ckad
+  name: ckad-deploy-p3q2
+  namespace: ns-p3q2-1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: front-end-app-p3q2
+  strategy: {}
+  template:
+    metadata:     
+      labels:
+        app: front-end-app-p3q2
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+       
+---
+ 
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: service-p3q2
+  name: service-p3q2
+  namespace: ns-p3q2-2
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: front-end-app-p3q2
+  type: ClusterIP
