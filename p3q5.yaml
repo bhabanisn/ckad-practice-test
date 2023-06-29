@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   labels:
     test: liveness
-  name: liveness-http
+  name: pod-p3q5
 spec:
   containers:
   - name: liveness
