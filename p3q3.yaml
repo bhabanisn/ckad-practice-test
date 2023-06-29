@@ -1,17 +1,28 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: pod-p3q3
+  labels:
+    exam: ckad
+  name: ckad-deploy-p2q2
 spec:
-  securityContext:
-    capabilities:
-      add: ["NET_ADMIN", "SYS_TIME"]
-    runAsUser: 1000
-  containers:
-  - name: sec-ctx-check
-    image: tomcat
-    securityContext:
-      capabilities:
-        add: ["NET_ADMIN", "SYS_TIME"]
-      runAsUser: 2000
-    
+  replicas: 3
+  selector:
+    matchLabels:
+      app: front-end-apps-p2q2
+  strategy: {}
+  template:
+    metadata:      
+      labels:
+        app: front-end-app-p2q2
+    spec:
+      securityContext:
+        capabilities:
+          add: ["NET_ADMIN", "SYS_TIME"]
+        runAsUser: 1000
+      containers:
+      - name: sec-ctx-check
+        image: tomcat
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "SYS_TIME"]
+          runAsUser: 2000
