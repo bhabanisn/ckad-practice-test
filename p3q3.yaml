@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-p3q3
+spec:
+  securityContext:
+    capabilities:
+      add: ["NET_ADMIN", "SYS_TIME"]
+    runAsUser: 1000
+  containers:
+  - name: sec-ctx-check
+    image: tomcat
+    securityContext:
+      capabilities:
+        add: ["NET_ADMIN", "SYS_TIME"]
+      runAsUser: 2000
+    
