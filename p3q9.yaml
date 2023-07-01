@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-p3q9
+spec:
+  backoffLimit: 5
+  activeDeadlineSeconds: 20
+  completions: 5
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: docker.io/library/bash:5
+        command: ["bash"] 
+        args:
+        - -c
+        - echo "Hello world!" && sleep 5  
+      restartPolicy: Never
